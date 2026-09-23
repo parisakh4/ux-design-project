@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeiPort – Import and Export Company</title>
+  <style>
+    @font-face {
+      font-family: "InriaSans";
+      font-style: normal;
+      font-weight: 400;
+      src: url("https://static.figma.com/font/InriaSans-Regular_1") format("woff2");
+    }
+    @font-face {
+      font-family: "InterMedium";
+      font-style: normal;
+      font-weight: 500;
+      src: url("https://static.figma.com/font/Inter_1") format("woff2");
+    }
+    @font-face {
+      font-family: "JejuGothic";
+      font-style: normal;
+      font-weight: 400;
+      src: url("https://static.figma.com/font/JejuGothic_1") format("woff2");
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #e5cea8;
+      font-family: "InterMedium", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("assets/c1005.png");
+      background-size: cover;
+      background-position: bottom;
+      opacity: 0.4;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    .hero__fg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 57%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero__fg img {
+      position: absolute;
+      width: 100%;
+      height: 165%;
+      top: -65%;
+      left: 0;
+      object-fit: cover;
+    }
+
+    .hero__logo-wrap {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 22%;
+      width: min(873px, 85%);
+    }
+
+    .hero__logo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      z-index: 10;
+    }
+
+    .nav__logo img {
+      height: 41px;
+      width: auto;
+      display: block;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .nav__links a {
+      font-family: "InterMedium", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.5;
+      color: #433f3a;
+      text-decoration: none;
+    }
+
+    .nav__links a:hover { opacity: 0.75; }
+
+    .nav__btn {
+      background-color: #433f3a;
+      color: #ded7c4;
+      font-family: "InterMedium", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 14px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+      text-decoration: none;
+    }
+
+    .nav__btn:hover { opacity: 0.9; }
+
+    /* ── ABOUT ── */
+    .about {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding-bottom: 64px;
+    }
+
+    .about__ship {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.5;
+    }
+
+    .about__ship img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .about__glow {
+      position: absolute;
+      top: 80px;
+      left: clamp(40px, 8.33%, 120px);
+      width: min(1120px, 85%);
+      height: 729px;
+      background-color: #868175;
+      filter: blur(175px);
+      border-radius: 50%;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .about__inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      padding: 100px clamp(40px, 8.33%, 120px) 60px;
+      align-items: flex-start;
+    }
+
+    .about__left {
+      flex: 1 1 340px;
+      max-width: 740px;
+    }
+
+    .about__heading {
+      font-family: "JejuGothic", sans-serif;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 57px);
+      line-height: 1.5;
+      color: #000;
+      margin-bottom: 32px;
+      white-space: pre-wrap;
+    }
+
+    .about__body {
+      font-family: "InriaSans", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.5;
+      color: #ded7c4;
+      margin-bottom: 48px;
+      max-width: 580px;
+    }
+
+    .about__cta {
+      background-color: #433f3a;
+      color: #ded7c4;
+      font-family: "InterMedium", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 14px 24px;
+      border-radius: 20px;
+      border: 1px solid #ded7c4;
+      cursor: pointer;
+      width: 100%;
+      max-width: 297px;
+      height: 80px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+
+    .about__cta:hover { opacity: 0.9; }
+
+    .about__right {
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-top: 16px;
+    }
+
+    .about__card {
+      border-radius: 15px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .about__card--light {
+      border: 5px solid #ded7c4;
+    }
+
+    .about__card--dark {
+      border: 5px solid #48443e;
+    }
+
+    .about__card span {
+      font-family: "InterMedium", sans-serif;
+      font-weight: 500;
+      font-size: clamp(18px, 2.5vw, 32px);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .about__card--light span { color: #433f3a; }
+    .about__card--dark span  { color: #ded7c4; }
+
+    /* ── FOOTER CONTACTS ── */
+    .contacts {
+      position: relative;
+      z-index: 1;
+      padding: 0 clamp(40px, 8.33%, 120px) 64px;
+    }
+
+    .contacts__line {
+      margin-bottom: 32px;
+      height: 2px;
+    }
+
+    .contacts__line img {
+      display: block;
+      width: 100%;
+      max-width: 1228px;
+    }
+
+    .contacts__row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px 48px;
+      align-items: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-item img {
+      width: 24px;
+      height: 24px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .contact-item span {
+      font-family: "InterMedium", sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.5;
+      color: #323232;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 24px; }
+      .nav__links { gap: 24px; }
+      .nav__links a { font-size: 16px; }
+      .about__inner { padding: 80px 24px 48px; }
+      .contacts { padding: 0 24px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+
+    <div class="hero__fg">
+      <img src="assets/b3400.png" alt="" />
+    </div>
+
+    <div class="hero__logo-wrap">
+      <img src="assets/97f8f.png" alt="BeiPort Import and Export Company" />
+    </div>
+
+    <nav>
+      <a class="nav__logo" href="#">
+        <img src="assets/97f8f.png" alt="BeiPort" />
+      </a>
+      <div class="nav__links">
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <a href="#" class="nav__btn">Home</a>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="about">
+    <div class="about__ship">
+      <img src="assets/b4df7.png" alt="" />
+    </div>
+    <div class="about__glow"></div>
+
+    <div class="about__inner">
+      <!-- Left -->
+      <div class="about__left">
+        <h2 class="about__heading">BEIPORT IS HERE TO&#10;REVOLUTIONIZE THE INDUSTRY</h2>
+        <p class="about__body">
+          Welcome to BeiPort, your trusted partner in global import and export logistics. With over [X] years of experience, we specialize in providing efficient, reliable, and cost-effective solutions tailored to your business needs. From customs clearance to freight forwarding and secure warehousing, our comprehensive services ensure your goods are delivered on time, every time.
+        </p>
+        <button class="about__cta">Click Here</button>
+      </div>
+
+      <!-- Right -->
+      <div class="about__right">
+        <div class="about__card about__card--light">
+          <span>BEIPORTS PARTNERSHIPS</span>
+        </div>
+        <div class="about__card about__card--dark">
+          <span>INTERNATIONAL PROJECTS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contacts -->
+    <div class="contacts">
+      <div class="contacts__line">
+        <img src="assets/75607.svg" alt="" />
+      </div>
+      <div class="contacts__row">
+        <div class="contact-item">
+          <img src="assets/2d5b1.svg" alt="Phone" />
+          <span>0049 111 222 3333</span>
+        </div>
+        <div class="contact-item">
+          <img src="assets/c8000.svg" alt="Email" />
+          <span>email@email.com</span>
+        </div>
+        <div class="contact-item">
+          <img src="assets/45123.svg" alt="WhatsApp" />
+          <span>@whatsappbeiport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
