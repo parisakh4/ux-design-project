@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #f8f7f4;
+    line-height: 1.6;
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #222;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* Hero */
+
+.hero {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.eyebrow {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 1.05;
+    margin-bottom: 25px;
+}
+
+.hero-description {
+    max-width: 500px;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+    padding: 14px 25px;
+    background: #222;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* Hero Card */
+
+.hero-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.check,
+.empty-check {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check {
+    background: #222;
+    color: white;
+    font-size: 12px;
+}
+
+.completed {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.progress {
+    height: 8px;
+    background: #eee;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.progress-bar {
+    width: 33%;
+    height: 100%;
+    background: #222;
+    border-radius: 10px;
+}
+
+.progress-text {
+    font-size: 13px;
+    color: #888;
+    margin-top: 8px;
+}
+
+
+/* Features */
+
+.features {
+    background: white;
+    padding: 100px 30px;
+}
+
+.section-heading {
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 50px;
+}
+
+.feature-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.feature p {
+    color: #666;
+}
+
+
+/* About */
+
+.about {
+    max-width: 1100px;
+    margin: auto;
+    padding: 100px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.about p:last-child {
+    color: #666;
+    font-size: 18px;
+}
+
+
+/* Contact */
+
+.contact {
+    text-align: center;
+    padding: 100px 30px;
+    background: #222;
+    color: white;
+}
+
+.contact h2 {
+    margin-bottom: 15px;
+}
+
+.contact p {
+    margin-bottom: 25px;
+    color: #ccc;
+}
+
+.contact button {
+    background: white;
+    color: #222;
+}
+
+
+/* JavaScript message */
+
+.hidden {
+    display: none;
+}
+
+#success-message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 25px;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
